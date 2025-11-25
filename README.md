@@ -200,18 +200,65 @@ source ~/.bashrc
 
 ### 3. Install Plugin (1 minute)
 
-**From GitHub**:
+#### Understanding Claude Code Plugins
+
+Claude Code plugins extend functionality through:
+- **Commands**: Custom slash commands (e.g., `/research`, `/research-quick`)
+- **Agents**: Specialized AI assistants for specific workflows
+- **Skills**: Model-invoked capabilities that activate automatically
+- **Hooks**: Event-driven automation at key workflow points
+- **MCP Servers**: External tool integration (Exa, Tavily, Brave, Perplexity)
+
+#### Installation Methods
+
+**Method 1: Interactive Discovery** (Recommended for Beginners)
 ```bash
+# In Claude Code, run:
+/plugin
+
+# Then:
+# 1. Select "Browse Plugins"
+# 2. Search for "multi-agent-researcher"
+# 3. Click Install
+```
+
+**Method 2: Direct Install from GitHub** (Fastest)
+```bash
+# Add the GitHub marketplace:
 /plugin marketplace add jamon8888/Claude-Multi-Agent-Research-System-Skill
+
+# Install the plugin:
+/plugin install multi-agent-researcher@jamon8888
+```
+
+**Method 3: Local Development Install**
+```bash
+# Clone the repository:
+git clone https://github.com/jamon8888/Claude-Multi-Agent-Research-System-Skill.git
+cd Claude-Multi-Agent-Research-System-Skill
+
+# Add as local marketplace:
+/plugin marketplace add .
+
+# Install from local:
 /plugin install multi-agent-researcher
 ```
 
-**From Local**:
+#### Verification
+
+After installation, verify the plugin is working:
+
 ```bash
-git clone https://github.com/jamon8888/Claude-Multi-Agent-Research-System-Skill.git
-cd Claude-Multi-Agent-Research-System-Skill
-/plugin marketplace add .
-/plugin install multi-agent-researcher
+# Check installed plugins:
+/plugin list
+# Should show: multi-agent-researcher v2.5.0
+
+# Check available commands:
+/help
+# Should show: /research, /research-quick, /research-deep, /setup-mcp-keys
+
+# Test the plugin:
+/research-quick test installation
 ```
 
 ### 4. Run Your First Research (10 minutes)
@@ -233,22 +280,94 @@ cd Claude-Multi-Agent-Research-System-Skill
 
 ## 📦 Installation
 
+### How Claude Code Plugins Work
+
+Claude Code plugins are self-contained packages that extend Claude's capabilities. This plugin includes:
+
+**Plugin Structure**:
+```
+multi-agent-researcher/
+├── .claude-plugin/
+│   ├── plugin.json              # Plugin metadata and configuration
+│   └── marketplace.json         # Marketplace distribution config
+├── commands/                    # 4 custom slash commands
+├── agents/                      # 3 specialized AI assistants
+├── skills/                      # Model-invoked capabilities
+├── hooks/                       # Event-driven automation
+└── .mcp.json                    # External tool integration
+```
+
+**What Happens on Install**:
+1. Plugin manifest (`.claude-plugin/plugin.json`) is read
+2. Commands are registered in Claude Code's command system
+3. Agents become available for task delegation
+4. Skills are activated based on context triggers
+5. Hooks integrate with Claude Code lifecycle events
+6. MCP servers connect external search providers
+
+**Plugin Management**:
+```bash
+# List installed plugins
+/plugin list
+
+# Enable/disable without uninstalling
+/plugin disable multi-agent-researcher
+/plugin enable multi-agent-researcher
+
+# Update to latest version
+/plugin install multi-agent-researcher@jamon8888 --force
+
+# Remove completely
+/plugin uninstall multi-agent-researcher
+```
+
 ### Detailed Installation Steps
 
 See **[INSTALL.md](INSTALL.md)** for comprehensive instructions including:
 - Step-by-step API key setup for each provider
 - Platform-specific environment variable configuration
-- Multiple installation methods (GitHub, local, ZIP)
-- Verification procedures
-- Troubleshooting guide
+- Multiple installation methods (interactive, GitHub, local)
+- Verification procedures with `/help` and `/plugin list`
+- Troubleshooting guide for common issues
 
 ### Quick Installation Summary
 
 1. **Get API Keys** → Visit provider websites (all have free tiers)
 2. **Set Environment Variables** → Windows/macOS/Linux instructions
-3. **Install Plugin** → Via marketplace or local directory
-4. **Verify** → Run `/plugin list` to confirm
+   → Or use `/setup-mcp-keys` command after installation
+3. **Install Plugin** → Choose from 3 methods:
+   - Interactive: `/plugin` → Browse Plugins
+   - Direct: `/plugin marketplace add jamon8888/...` + `/plugin install`
+   - Local: Clone repo + `/plugin marketplace add .`
+4. **Verify** → Run `/help` to see new commands
 5. **Test** → Run `/research-quick test` to validate
+
+### Team Deployment
+
+For organizations deploying to teams:
+
+**Automatic Installation** (Recommended):
+```bash
+# Add to repository's .claude/settings.json:
+{
+  "marketplaces": [
+    {
+      "type": "github",
+      "repo": "jamon8888/Claude-Multi-Agent-Research-System-Skill"
+    }
+  ],
+  "plugins": ["multi-agent-researcher@jamon8888"]
+}
+```
+
+When team members trust the folder, the plugin installs automatically.
+
+**Manual Team Distribution**:
+```bash
+# Share these commands with your team:
+/plugin marketplace add jamon8888/Claude-Multi-Agent-Research-System-Skill
+/plugin install multi-agent-researcher@jamon8888
+```
 
 ---
 
