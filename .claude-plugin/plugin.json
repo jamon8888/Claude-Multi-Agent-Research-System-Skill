@@ -3,16 +3,21 @@
     "version": "2.5.0",
     "description": "Orchestrated multi-agent research with parallel execution and comprehensive synthesis",
     "author": {
-        "name": "Ahmed Maged",
-        "email": "ahmedibrahim085@github.com"
+        "name": "Rubio Jamin",
+        "email": "rubio.jamin@gmail.com"
     },
+    "homepage": "https://github.com/jamon8888/Claude-Multi-Agent-Research-System-Skill",
+    "repository": "https://github.com/jamon8888/Claude-Multi-Agent-Research-System-Skill",
+    "license": "Apache-2.0",
     "keywords": [
         "research",
         "multi-agent",
         "search",
         "synthesis",
         "mcp",
-        "automation"
+        "automation",
+        "parallel",
+        "adaptive"
     ],
     "mcpServers": "./.mcp.json"
 }
