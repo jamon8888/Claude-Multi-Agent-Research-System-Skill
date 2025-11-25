@@ -63,6 +63,24 @@
           "landscape of.*",
           "state of the art (in|for).*",
           "best practices (for|in).*"
+        ],
+        "excludePatterns": [
+          "(search|find|look|grep|locate)\\s+(for|in|through|within)\\s+(the\\s+)?(code|codebase|file|files|directory|function|class|variable|method|implementation|repository|repo)",
+          "(search|find)\\s+(a|the)\\s+(function|class|variable|method|file|component|module)",
+          "(explore|examine|analyze|review|inspect)\\s+(the\\s+)?(code|codebase|implementation|source|repository|architecture)",
+          "(read|check|view|show|display|open)\\s+(the\\s+)?(file|code|implementation|source)",
+          "(where|how)\\s+(is|are|does)\\s+.*(defined|implemented|located|stored)",
+          "(find|locate)\\s+all\\s+(references|usages|occurrences|instances)",
+          "search\\s+for\\s+(syntax|usage|examples?)\\s+of",
+          "(list|show|display|get)\\s+(all\\s+)?(files?|functions?|classes?|methods?|variables?)",
+          ".*\\.(js|ts|py|go|rs|java|cpp|c|h|md|json|yaml|yml|toml).*",
+          "(debug|fix|solve|resolve|troubleshoot)",
+          "(write|create|implement|build|add|modify|update|change|edit|refactor)\\s+(code|function|class|feature)",
+          "(test|testing|unit test|integration test)",
+          "(git|commit|branch|merge|pull request|pr)",
+          "(install|configure|setup|deploy)",
+          "(api|endpoint|route|handler)\\s+(documentation|docs|reference)",
+          "documentation\\s+(for|of|about)\\s+(the\\s+)?(code|library|package|framework|api)"
         ]
       },
       "fileTriggers": {

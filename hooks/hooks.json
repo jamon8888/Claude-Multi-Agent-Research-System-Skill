@@ -34,11 +34,15 @@
             "hooks": [
                 {
                     "type": "command",
-                    "command": "New-Item -ItemType Directory -Path 'files/research_notes','files/reports' -Force -ErrorAction SilentlyContinue"
+                    "command": "mkdir -p files/research_notes files/reports"
                 },
                 {
                     "type": "log",
                     "message": "🚀 Multi-agent research skill activated"
+                },
+                {
+                    "type": "command",
+                    "command": "if [ -z \"$EXA_API_KEY\" ] || [ -z \"$TAVILY_API_KEY\" ] || [ -z \"$BRAVE_API_KEY\" ] || [ -z \"$PERPLEXITY_API_KEY\" ]; then echo '⚠️  MCP API keys not fully configured. Run: /setup-mcp-keys'; fi"
                 }
             ]
         }
